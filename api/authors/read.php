@@ -3,6 +3,14 @@
 
 require('../config/Database.php');
 require('../model/Author.php');
+require('read_single.php'); //conditional logic will route if needed
+
+/*you are going to route to a read file based on the http GET method. 
+In that file, you will likely use conditional logic - maybe based on a parameter received -
+ to determine if you need to read all or read one. */
+
+
+
 
 //Instantiate db
 $database = new Database();
@@ -33,4 +41,7 @@ if ($allAuthors->rowCount() > 0)
     echo json_encode(array('message' => 'No Authors'));
 }
 
+
+
+exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
 ?>

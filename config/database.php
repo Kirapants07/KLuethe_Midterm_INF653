@@ -2,17 +2,23 @@
 
 class Database {
     
-    private $host = 'm7az7525jg6ygibs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-    private $user = 'w6zf2cbuuhpaanb5';
-    private $password = getenv($password);
-    private $dbname = 'ttyw871lavputc97';
     private $connection;
 
     public function dbConnect() {
+        
+        //use JAWSDB_URL to get connection info
+        $url = getenv('JAWSDB_URL');
+        $dbparts = parse_url($url);
+        
+        $hostname = $dbparts['host'];
+        $username = $dbparts['user'];
+        $password = $dbparts['pass'];
+        $database = ltrim($dbparts['path'],'/');
+
         this-$connection = null; //disconnect from any previous connection
     
         try {
-            $connection = new PDO("mysql:host= {$this->$host};dbname= {$this->$dbname}", $this->$user, $this->$password);
+            $connection = new PDO("mysql:host= $host;dbname= $dbname", $user, $password);
             //set PDO error mode to exception
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connected to Database";

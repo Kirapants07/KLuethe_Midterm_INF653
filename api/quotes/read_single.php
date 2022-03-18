@@ -1,0 +1,1 @@
+// Needs to join tables in query to return author name and category name 
