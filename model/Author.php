@@ -63,7 +63,7 @@ class Author {
     public function create() {
         //try to prepare and execute sql statement
         try {
-            //To create a new id, use lastInsertId() 
+            //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
 
 
 

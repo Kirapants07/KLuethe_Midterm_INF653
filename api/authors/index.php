@@ -26,5 +26,8 @@ if ($method == "DELETE"){
     require_once('delete.php');
 }
 
+//instantiate model
+$author = new Author();
+
 
 ?>

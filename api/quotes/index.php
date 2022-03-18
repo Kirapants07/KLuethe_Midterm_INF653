@@ -26,5 +26,7 @@ if ($method == "DELETE"){
     require_once('delete.php');
 }
 
+//instantiate model
+$quote = new Quote();
 
 ?>
