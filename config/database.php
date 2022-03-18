@@ -1,5 +1,4 @@
 <?php 
-
 class Database {
     
     private $connection;
@@ -30,3 +29,6 @@ class Database {
     }
 }
 ?>
+
+
+
