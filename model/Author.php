@@ -15,7 +15,7 @@ class Author {
 
     //Constructor with DB
     public function __construct($db) {
-        $this->connection - $db;
+        $this->connection = $db;
     }
 
     //Read all authors, and return as JSON data

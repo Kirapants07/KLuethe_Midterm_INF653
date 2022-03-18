@@ -14,7 +14,7 @@ class Quote {
 
     //Constructor with DB
     public function __construct($db) {
-        $this->connection - $db;
+        $this->connection = $db;
     }
 
 }
