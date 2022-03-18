@@ -15,7 +15,7 @@ class Database {
         $password = $dbparts['pass'];
         $database = ltrim($dbparts['path'],'/');
 
-        this-$connection = null; //disconnect from any previous connection
+        $connection = null; //disconnect from any previous connection
     
         try {
             $connection = new PDO("mysql:host= $host;dbname= $dbname", $user, $password);
