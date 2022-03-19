@@ -85,9 +85,6 @@ class Author {
                 return false;
             }
             //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
-
-
-
         } catch {
             echo "Failed to Create new entry";
         }
@@ -96,11 +93,38 @@ class Author {
 
     //Update existing author with given id, return updated entry as JSON data
     public function update($id) {
-            //try to prepare and execute sql statement
-            try {
-            } catch {
-                echo "Failed to update entry";
+        //try to prepare and execute sql statement
+        try {
+            //query
+            $sql = "UPDATE {this->$table} 
+            SET
+                author = :author,
+            WHERE 
+                id = :id,";
+            
+            //Prepare statement
+            $stmt = $this->connection->prepare($sql);
+
+            //Sanitize user input
+            //not sure if variable name is correct HERE ******************
+            $this->id = filter_input(INPUT_GET, {$this->id}, FILTER_SANITIZE_STRING); 
+            $this->author = filter_input(INPUT_GET, {$this->author}, FILTER_SANITIZE_STRING); 
+
+            //Bind parameters
+            $stmt->bindParam(':id', $this->id);
+            $stmt->bindParam(':author', $this->author);
+
+            //Check if query executes correctly
+            if ($stmt->execute()){
+                return true;
+            } else {
+                printf("Error: %s. \n", $stmt->error);
+                return false;
             }
+            //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
+        } catch {
+            echo "Failed to Create new entry";
+        }
 
     }
 
