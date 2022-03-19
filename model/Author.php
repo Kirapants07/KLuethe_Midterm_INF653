@@ -42,7 +42,7 @@ class Author {
             //Perpare statement with query
             $stmt = $this->connection->prepare($sql);
             //Bind ID variable to prepared statement
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id',  $this->id);
             //Execute query
             $stmt->execute(); //executed with WHERE id = $id
 
@@ -60,7 +60,7 @@ class Author {
         //try to prepare and execute sql statement
         try {
             //query
-            $sql = "INSERT INTO {this->$table} 
+            $sql = "INSERT INTO {$this->table} 
             SET
                 id = :id,
                 author = :author,";
@@ -96,7 +96,7 @@ class Author {
         //try to prepare and execute sql statement
         try {
             //query
-            $sql = "UPDATE {this->$table} 
+            $sql = "UPDATE {$this->table} 
             SET
                 author = :author,
             WHERE 
@@ -132,10 +132,23 @@ class Author {
     public function delete($id){
             //try to prepare and execute sql statement
             try {
-            } catch {
-                echo "Failed to Create new entry";
-            }
+                //query
+                $sql = "DELETE FROM {$this->table}
+                        WHERE id = :id";
 
+                //prepare statement
+                $stmt = $this->connection->prepare($sql);
+
+                //Sanitize id
+                $this->id = htmlspecialchars(strip_tags($this->id));
+
+                //Bind ID variable to prepared statement
+                $stmt->bindParam(':id', $this->id);
+                //Execute query
+                $stmt->execute(); //executed with WHERE id = $id
+            } catch {
+                echo "Failed to delete entry";
+            }
         return json_encode($id);
     }
 
