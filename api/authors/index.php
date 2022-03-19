@@ -10,7 +10,7 @@ if ($method === 'OPTIONS') {
 }
 
 require_once ('../../config/Database.php'); 
-require_once ('../../model\Author.php');
+require_once ('../../model/Author.php');
 
 if($method == "GET"){
     require_once './read.php';
