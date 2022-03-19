@@ -19,10 +19,10 @@ $newAuthor->id = $data->id;
 
 //Check if delete author entry was successful
 if ($newAuthor->delete()) {
-    echo json_encode(array('message' => 'Post deleted'))
+    echo json_encode(array('message' => 'Author deleted'))
 }
 else {
-    echo json_encode(array('message' => 'Error: Post not deleted'))
+    echo json_encode(array('message' => 'Error: Author not deleted'))
 }
 exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
 ?>
