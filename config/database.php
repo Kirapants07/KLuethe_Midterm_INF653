@@ -6,7 +6,7 @@ class Database {
 
     public function __construct(){
         $this->url = getenv('JAWSDB_URL');
-        $this->dbparts = parse_url($url);
+        $this->dbparts = parse_url($this->url);
     }
 
     public function connect() {
@@ -23,10 +23,10 @@ class Database {
             // set the PDO error mode to exception
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connected successfully";
-            return $this->conn;
         } catch(PDOException $e) {
             echo "Connection to Database Failed:" . $e->getMessage();
         }
+        return $this->conn;
     }
 }
 ?>
