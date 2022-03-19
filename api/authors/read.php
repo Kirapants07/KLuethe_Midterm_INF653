@@ -1,9 +1,9 @@
 <?php
 
 
-require('../../config/Database.php');
-require('../../model/Author.php');
-require('read_single.php'); //conditional logic will route if needed
+require '../../config/Database.php';
+require '../../model/Author.php';
+require 'read_single.php'; //conditional logic will route if needed
 
 /*you are going to route to a read file based on the http GET method. 
 In that file, you will likely use conditional logic - maybe based on a parameter received -
