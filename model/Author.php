@@ -33,12 +33,12 @@ class Author {
     }
 
     //Read author with given id and return as JSON data
-    public function readSingle($id) {
+    public function read_single() {
 
         //try to prepare and execute sql statement
         try {  
             //query
-            $sql = "SELECT author FROM {$this->table} WHERE id = :id";
+            $sql = "SELECT id, author FROM {$this->table} WHERE id = :id";
             //Perpare statement with query
             $stmt = $this->connection->prepare($sql);
             //Bind ID variable to prepared statement
@@ -46,8 +46,10 @@ class Author {
             //Execute query
             $stmt->execute(); //executed with WHERE id = $id
 
+            //fetch associative array
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+            //set properties
             $this->id = $row['id'];
             $this->author = $row['author'];
         } catch (Exception $e) {

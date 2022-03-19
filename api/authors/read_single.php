@@ -1,8 +1,29 @@
 <?php
-require '../../config/Database.php';
-require '../../model/Author.php';
 
-header('Access-Control-Allow-Methods: GET');
+require_once '../../config/Database.php';
+require_once '../../model/Author.php';
 
-exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
+//Instantiate db and connect
+$database = new Database();
+$db = $database->connect();
+
+//Instantiate author object
+$author = new Author($db);
+
+//Get ID from URL. If no id is set, then do nothing
+$author->id = isset($_GET['id']) ? $_GET['id'] : die();
+
+//Get Author
+$author->read_single();
+
+//Create Array
+$author_arr = array(
+    'id' => $author->id,
+    'author' => $author->author,
+);
+
+//Convert to JSON
+print_r(json_encode($author_arr));
+
+exit();
 ?>
