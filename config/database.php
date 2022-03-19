@@ -2,13 +2,10 @@
 class Database {
     private $url;
 
-    public function __construct($db) {
-        //use JAWSDB_URL to get connection info
-        $this->url = getenv('JAWSDB_URL');
-    }
+
 
     public function connect() {
-        
+        $this->url = getenv('JAWSDB_URL');
         $dbparts = parse_url($url);
 
         $hostname = $dbparts['host'];
@@ -26,7 +23,6 @@ class Database {
             return $conn;
         } catch(PDOException $e) {
             echo "Connection to Database Failed:" . $e->getMessage();
-            //exit();
         }
     }
 }
