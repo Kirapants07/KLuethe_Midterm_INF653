@@ -1,29 +1,20 @@
 <?php
-require_once '../../config/Database.php';
-require_once '../../model/Author.php';
-
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
-
-//Instantiate author object
-$newAuthor = new Author($db);
 
 //get posted data
 $data = json_decode(file_get_contents("php://input"));
 
-
-//need to use isset() to check if author is being sent ************************************
 //assign variables
-$newAuthor->id = $data->id;
 $newAuthor->author = $data->author;
 
-//Check if create author entry was successful
-if ($newAuthor->create()) {
-    echo json_encode(array('message' => 'Post created'))
+//check if author name is specified
+//Create new author entry
+if (isset($_GET['author']) && $newAuthor->create()) {
+    echo json_encode(array('author' => $newAuthor->author,
+                            'id' => $db->lastInsertid(),);
 }
 else {
-    echo json_encode(array('message' => 'Error: Post not created'))
+    echo json_encode(array('message' => 'authorId Not Found'));
 }
+
 exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
 ?>
