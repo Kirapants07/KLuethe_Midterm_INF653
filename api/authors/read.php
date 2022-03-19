@@ -1,9 +1,9 @@
 <?php
 
 
-require '../../config/Database.php';
-require '../../model/Author.php';
-require 'read_single.php'; //conditional logic will route if needed
+require_once '../../config/Database.php';
+require_once '../../model/Author.php';
+require_once 'read_single.php'; //conditional logic will route if needed
 
 /*you are going to route to a read file based on the http GET method. 
 In that file, you will likely use conditional logic - maybe based on a parameter received -
@@ -13,7 +13,7 @@ In that file, you will likely use conditional logic - maybe based on a parameter
 
 //Instantiate db and connect
 $database = new Database();
-$db = $database->dbConnect();
+$db = $database->connect();
 
 //Instantiate author object
 $newAuthor = new Author($db);
@@ -27,7 +27,7 @@ if ($allAuthors->rowCount() > 0)
     $allAuthors_array['data'] = array();
 
     //loop through all rows
-    while ($row = $author->fetch(PDO::FETCH_ASSOC)){
+    while ($row = $allAuthors->fetch(PDO::FETCH_ASSOC)){
         extract($row);
 
         $author_item = array (
@@ -36,7 +36,7 @@ if ($allAuthors->rowCount() > 0)
         );
 
         //Push to data element within array
-        array_push($authors_arr['data'], $author_item);
+        array_push($allAuthors_array['data'], $author_item);
 
         //Convert to JSON and output
         echo json_encode($allAuthors_array);

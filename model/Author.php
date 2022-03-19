@@ -27,7 +27,7 @@ class Author {
             return $stmt;
 
             //**************May need to convert to JSON data  */
-        } catch {
+        } catch (Exception $e) {
             echo "Failed to read";
         }
     }
@@ -50,7 +50,7 @@ class Author {
 
             $this->id = $row['id'];
             $this->author = $row['author'];
-        } catch {
+        } catch (Exception $e) {
             echo "Failed to read";
         }
     }
@@ -69,9 +69,8 @@ class Author {
             $stmt = $this->connection->prepare($sql);
 
             //Sanitize user input
-            //not sure if variable name is correct HERE ******************
-            $this->id = filter_input(INPUT_GET, {$this->id}, FILTER_SANITIZE_STRING); 
-            $this->author = filter_input(INPUT_GET, {$this->author}, FILTER_SANITIZE_STRING); 
+            $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
+            $this->author = filter_input(INPUT_GET, "author", FILTER_SANITIZE_STRING); 
 
             //Bind parameters
             $stmt->bindParam(':id', $this->id);
@@ -85,7 +84,7 @@ class Author {
                 return false;
             }
             //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
-        } catch {
+        } catch (Exception $e) {
             echo "Failed to Create new entry";
         }
 
@@ -106,9 +105,8 @@ class Author {
             $stmt = $this->connection->prepare($sql);
 
             //Sanitize user input
-            //not sure if variable name is correct HERE ******************
-            $this->id = filter_input(INPUT_GET, {$this->id}, FILTER_SANITIZE_STRING); 
-            $this->author = filter_input(INPUT_GET, {$this->author}, FILTER_SANITIZE_STRING); 
+            $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
+            $this->author = filter_input(INPUT_GET, "author", FILTER_SANITIZE_STRING); 
 
             //Bind parameters
             $stmt->bindParam(':id', $this->id);
@@ -122,7 +120,7 @@ class Author {
                 return false;
             }
             //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
-        } catch {
+        } catch (Exception $e) {
             echo "Failed to Create new entry";
         }
 
@@ -140,20 +138,17 @@ class Author {
                 $stmt = $this->connection->prepare($sql);
 
                 //Sanitize id
-                $this->id = htmlspecialchars(strip_tags($this->id));
+                $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
+
 
                 //Bind ID variable to prepared statement
                 $stmt->bindParam(':id', $this->id);
                 //Execute query
                 $stmt->execute(); //executed with WHERE id = $id
-            } catch {
+            } catch (Exception $e) {
                 echo "Failed to delete entry";
             }
         return json_encode($id);
     }
-
-
 }
-
-
 ?>

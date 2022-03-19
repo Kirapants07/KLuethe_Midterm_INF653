@@ -7,7 +7,7 @@ class Database {
         $this->url = getenv('JAWSDB_URL');
     }
 
-    public function dbConnect() {
+    public function connect() {
         
         $dbparts = parse_url($url);
 

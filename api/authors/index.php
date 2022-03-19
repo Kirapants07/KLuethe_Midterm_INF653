@@ -9,8 +9,6 @@ if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
 }
 
-//include database
-require_once '../../config/Database.php';
 
 if($method == "GET"){
     require_once 'read.php';
