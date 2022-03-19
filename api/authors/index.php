@@ -12,7 +12,8 @@ require_once './test.php';
 require_once '../testA.php';
 require_once '../../config/testB.php';
 //require_once '../../config/Database.php'; 
-require "/APP/config/Database.php";
+require_once '../../config/Database_copy.php'; 
+//require "/APP/config/Database.php";
 require_once '../../model/Author.php';
 
 if($method == "GET"){
