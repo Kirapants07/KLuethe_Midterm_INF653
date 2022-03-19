@@ -9,6 +9,8 @@ if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
 }
 require_once './test.php';
+require_once '../testA.php';
+require_once '../../config/testB.php';
 //require_once '../../config/Database.php'; 
 require "/APP/config/Database.php";
 require_once '../../model/Author.php';
