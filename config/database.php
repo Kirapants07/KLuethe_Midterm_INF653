@@ -1,15 +1,20 @@
 <?php 
 class Database {
     private $conn;
+    private $url;
+    private $dbparts;
+
+    public function __construct(){
+        $this->url = getenv('JAWSDB_URL');
+        $this->dbparts = parse_url($url);
+    }
 
     public function connect() {
-        $url = getenv('JAWSDB_URL');
-        $dbparts = parse_url($url);
 
-        $hostname = $dbparts['host'];
-        $username = $dbparts['user'];
-        $password = $dbparts['pass'];
-        $database = ltrim($dbparts['path'],'/');
+        $hostname = $this->dbparts['host'];
+        $username = $this->dbparts['user'];
+        $password = $this->dbparts['pass'];
+        $database = ltrim($this->dbparts['path'],'/');
 
         $this->conn = null; //disconnect from any previous connection
     
