@@ -18,7 +18,7 @@ class Database {
         $password = $dbparts['pass'];
         $database = ltrim($dbparts['path'],'/');
 
-        log.console("to line 21");
+       // log.console("to line 21");
         try {
             $this->conn = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
             // set the PDO error mode to exception
@@ -27,7 +27,7 @@ class Database {
         } catch(PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
-       // return $this->conn;
+        return $this->conn;
     }
 }
 ?>
