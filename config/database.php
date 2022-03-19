@@ -14,18 +14,18 @@ class Database {
         $password = $dbparts['pass'];
         $dbname = ltrim($dbparts['path'],'/');
 
-        $this->$connection = null; //disconnect from any previous connection
+        $this->connection = null; //disconnect from any previous connection
     
         try {
-            $this->$connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+            $this->connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
             //set PDO error mode to exception
-            $this->$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connected to Database";
         } catch(PDOException $e) {
             echo "Connection to Database Failed:" . $e->getMessage();
             //exit();
         }
-        return $this->$connection; 
+        return $this->connection; 
     }
 }
 ?>
