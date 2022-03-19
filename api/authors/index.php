@@ -10,7 +10,7 @@ if ($method === 'OPTIONS') {
 }
 
 //include database
-
+require_once '../../config/Database.php';
 
 if($method == "GET"){
     require_once 'read.php';
@@ -30,7 +30,6 @@ if ($method == "DELETE"){
 }
 
 //instantiate model
-$author = new Author();
-
+//$author = new Author();
 
 ?>

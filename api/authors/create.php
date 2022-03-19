@@ -25,10 +25,5 @@ if ($newAuthor->create()) {
 else {
     echo json_encode(array('message' => 'Error: Post not created'))
 }
-
-
-
-
-
 exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
 ?>
