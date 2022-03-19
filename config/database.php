@@ -2,12 +2,16 @@
 class Database {
     
     private $connection;
+    private $url;
+
+    public function __construct($db) {
+        //use JAWSDB_URL to get connection info
+        $this->url = getenv('JAWSDB_URL');
+    }
 
     public function dbConnect() {
         
-        //use JAWSDB_URL to get connection info
-        $url = getenv('JAWSDB_URL');
-        $dbparts = parse_url($url);
+        $dbparts = parse_url($this->url);
         
         $host = $dbparts['host'];
         $user = $dbparts['user'];
