@@ -3,48 +3,51 @@
 
 require_once '../../config/Database.php';
 require_once '../../model/Author.php';
-require_once 'read_single.php'; //conditional logic will route if needed
 
-/*you are going to route to a read file based on the http GET method. 
-In that file, you will likely use conditional logic - maybe based on a parameter received -
- to determine if you need to read all or read one. */
+//If id is specified, only read_single author
+if (isset($_GET['id'])){
+    require_once 'read_single.php'; 
+} 
+//If no url is specified, read all authors
+else {
 
+    //Instantiate db and connect
+    $database = new Database();
+    $db = $database->connect();
 
+    //Instantiate author object
+    $newAuthor = new Author($db);
+    //get all authors
+    $allAuthors = $newAuthor->read();
 
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
+    //if there are authors, post array
+    if ($allAuthors->rowCount() > 0)
+    {
+        $allAuthors_array = array();
+        $allAuthors_array['data'] = array();
 
-//Instantiate author object
-$newAuthor = new Author($db);
-//get all authors
-$allAuthors = $newAuthor->read();
+        //loop through all rows
+        while ($row = $allAuthors->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
 
-//if there are authors, post array
-if ($allAuthors->rowCount() > 0)
-{
-    $allAuthors_array = array();
-    $allAuthors_array['data'] = array();
+            $author_item = array (
+                'id' => $id,
+                'author' => $author,
+            );
 
-    //loop through all rows
-    while ($row = $allAuthors->fetch(PDO::FETCH_ASSOC)){
-        extract($row);
+            //Push to data element within array
+            array_push($allAuthors_array['data'], $author_item);
 
-        $author_item = array (
-            'id' => $id,
-            'author' => $author,
-        );
-
-        //Push to data element within array
-        array_push($allAuthors_array['data'], $author_item);
-
-        //Convert to JSON and output
-        echo json_encode($allAuthors_array);
+            //Convert to JSON and output
+            echo json_encode($allAuthors_array);
+        }
+    } else {
+        //No authors
+        echo json_encode(array('message' => 'authorId Not Found'));
     }
-} else {
-    //No authors
-    echo json_encode(array('message' => 'authorId Not Found'));
 }
 
 exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
+
+
 ?>

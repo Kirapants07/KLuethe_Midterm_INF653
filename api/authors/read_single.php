@@ -1,8 +1,5 @@
 <?php
 
-require_once '../../config/Database.php';
-require_once '../../model/Author.php';
-
 //Instantiate db and connect
 $database = new Database();
 $db = $database->connect();
@@ -11,7 +8,7 @@ $db = $database->connect();
 $author = new Author($db);
 
 //Get ID from URL. If no id is set, then do nothing
-$author->id = isset($_GET['id']) ? $_GET['id'] : die();
+$author->id = $_GET['id'];
 
 //Get Author
 $author->read_single();
