@@ -40,11 +40,10 @@ if ($allAuthors->rowCount() > 0)
 
         //Convert to JSON and output
         echo json_encode($allAuthors_array);
-
     }
 } else {
     //No authors
-    echo json_encode(array('message' => 'No Authors'));
+    echo json_encode(array('message' => 'authorId Not Found'));
 }
 
 exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
