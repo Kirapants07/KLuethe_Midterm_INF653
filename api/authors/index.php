@@ -18,7 +18,7 @@ if($method == "GET"){
 }
 
 if ($method == "POST"){
-    require_once'create.php';
+    require_once 'create.php';
 }
 
 if ($method == "PUT"){
