@@ -1,7 +1,5 @@
 <?php 
 class Database {
-    
-    private $connection;
     private $url;
 
     public function __construct($db) {
@@ -11,25 +9,25 @@ class Database {
 
     public function dbConnect() {
         
-        $dbparts = parse_url($this->url);
-        
-        $host = $dbparts['host'];
-        $user = $dbparts['user'];
-        $password = $dbparts['pass'];
-        $dbname = ltrim($dbparts['path'],'/');
+        $dbparts = parse_url($url);
 
-        $this->connection = null; //disconnect from any previous connection
+        $hostname = $dbparts['host'];
+        $username = $dbparts['user'];
+        $password = $dbparts['pass'];
+        $database = ltrim($dbparts['path'],'/');
+
+        $conn = null; //disconnect from any previous connection
     
         try {
-            $this->connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
-            //set PDO error mode to exception
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Connected to Database";
+            $conn = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connected successfully";
+            return $conn;
         } catch(PDOException $e) {
             echo "Connection to Database Failed:" . $e->getMessage();
             //exit();
         }
-        return $this->connection; 
     }
 }
 ?>
