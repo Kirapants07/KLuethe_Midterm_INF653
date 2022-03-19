@@ -9,8 +9,8 @@ if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
 }
 
-require_once '../../config/DataBase.php'; 
-//require_once '../../config/Database_copy.php'; 
+//require_once '../../config/DataBase.php'; 
+require_once '../../config/Database_copy.php'; 
 require_once '../../model/Author.php';
 
 if($method == "GET"){
