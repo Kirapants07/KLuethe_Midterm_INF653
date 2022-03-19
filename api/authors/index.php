@@ -9,21 +9,24 @@ if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
 }
 
+//include database
+
+
 if($method == "GET"){
-    require_once('read.php');
-    require_once('read_single.php');
+    require_once 'read.php';
+    require_once 'read_single.php';
 }
 
 if ($method == "POST"){
-    require_once('create.php');
+    require_once'create.php';
 }
 
 if ($method == "PUT"){
-    require_once('update.php');
+    require_once 'update.php';
 }
 
 if ($method == "DELETE"){
-    require_once('delete.php');
+    require_once 'delete.php';
 }
 
 //instantiate model
