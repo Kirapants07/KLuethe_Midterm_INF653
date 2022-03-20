@@ -39,11 +39,15 @@ else {
             array_push($allAuthors_array['data'], $author_item);
 
             //Convert to JSON and output
-            echo json_encode($allAuthors_array);
+            $message = json_encode($allAuthors_array);
+            echo $message;
+            return $message;
         }
     } else {
         //No authors
-        echo json_encode(array('message' => 'authorId Not Found'));
+        $message = json_encode(array('message' => 'authorId Not Found'));
+        echo $message;
+        return $message;
     }
 }
 
