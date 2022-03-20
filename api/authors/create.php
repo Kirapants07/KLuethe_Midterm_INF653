@@ -19,8 +19,10 @@ $newAuthor->author = $data->author;
 //check if author name is specified
 //Create new author entry
 if (isset($_GET['author']) && $newAuthor->create()) {
-    echo json_encode(array('author' => $newAuthor->author,
+    echo json_encode(
+        array('author' => $newAuthor->author,
                             'id' => $db->lastInsertid(),
+        )
     );
 }
 else {
