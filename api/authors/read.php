@@ -3,12 +3,8 @@
 require_once '../../config/Database.php';
 require_once '../../model/Author.php';
 
-//get posted data
-$data = json_decode(file_get_contents("php://input"));
-
 //If id is specified, only read_single author
-//if (isset($_GET['id'])){
-if (isset($data->id) && !empty($data->id)) {
+if (isset($_GET['id'])){
     require_once 'read_single.php'; 
 } 
 //If no url is specified, read all authors
