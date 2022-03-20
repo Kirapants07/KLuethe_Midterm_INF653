@@ -18,10 +18,10 @@ else {
     $newAuthor = new Author($db);
 
     //get all authors
-    $allAuthors = $newAuthor->read();
+    $newAuthor->read();
 
     //if there are authors, post array
-    if ($allAuthors->rowCount() > 0)
+    if ($newAuthor->rowCount() > 0)
     {
         //Create Array
         $author_arr = array(
