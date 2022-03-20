@@ -1,12 +1,11 @@
 <?php
-<<<<<<< HEAD
 
 require_once '../../config/Database.php';
 require_once '../../model/Author.php';
-=======
+
 //get posted data
 $data = json_decode(file_get_contents("php://input"));
->>>>>>> parent of 4b2f1b4 (moved all require once for db and authors to CRUD files)
+
 
 //Instantiate db and connect
 $database = new Database();
