@@ -23,20 +23,10 @@ else {
     //if there are authors, post array
     if ($allAuthors->rowCount() > 0)
     {
-        $allAuthors_array = array();
-       // $allAuthors_array['data'] = array();
+        $authors_arr = $allAuthors->fetchAll(PDO::FETCH_ASSOC);
 
-        //loop through all rows
-        while ($row = $allAuthors->fetch(PDO::FETCH_ASSOC)){
-            extract($row);
-
-            $author_item = array (
-                'id' => $id,
-                'author' => $author,
-            );
-        }
-            //Convert to JSON and output
-            echo json_encode(array($author_item));
+        //Convert to JSON and output
+        echo json_encode(array(authors_arr));
 
     } else {
         //No authors
