@@ -3,7 +3,7 @@
 class Category {
     private $connection; 
     //Table
-    private $table = 'category';
+    private $table = 'categories';
 
     //Table columns
     public $id;
@@ -14,7 +14,7 @@ class Category {
         $this->connection = $db;
     }
 
-    //Read all categorys, and return as JSON data
+    //Read all categories, and return as JSON data
     public function read() {
         //try to prepare and execute sql statement
         try {
