@@ -36,10 +36,10 @@ else {
 
             //Push to data element within array
             array_push($allAuthors_array, $author_item);
+        }
 
             //output
             echo $allAuthors_array;
-        }
     } else {
         //No authors
         
