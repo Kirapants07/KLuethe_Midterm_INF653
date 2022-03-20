@@ -62,7 +62,7 @@ class Author {
             //query
             $sql = "INSERT INTO {$this->table} 
             SET
-                author = :author,";
+                author = :author";
             
             //Prepare statement
             $stmt = $this->connection->prepare($sql);
