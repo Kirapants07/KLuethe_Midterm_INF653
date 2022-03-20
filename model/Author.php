@@ -50,7 +50,6 @@ class Author {
             //set properties
             $this->id = $row['id'];
             $this->author = $row['author'];
-            
         } catch (Exception $e) {
             echo "Failed to read";
         }
@@ -86,19 +85,6 @@ class Author {
             //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
         } catch (Exception $e) {
             echo "Failed to Create new entry";
-
-
-
-            /*Your required output is an array that is sent as JSON data.
-
-                This is the ideal place to build the array that is needed for the response and return it. 
-                If this is the categories create() method, think about doing the following:
-                // execute statement here then...
-                $category_arr = array(
-                'id' => $this->conn->lastInsertId(), 
-                'category' => $this->category
-                );
-                return $category_arr;* */
         }
 
     }
