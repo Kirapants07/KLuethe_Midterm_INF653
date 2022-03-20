@@ -22,7 +22,7 @@ if (isset($data->id) && !empty($data->id))
 
 //Check if delete author entry was successful
 if ($newAuthor->delete()) {
-    echo json_encode(array('message' => $newAuthor->id));
+    echo json_encode(array('id' => $newAuthor->id));
 }
 else {
     echo json_encode(array('message' => 'No Quotes Found'));
