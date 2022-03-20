@@ -20,7 +20,10 @@ else {
     //get all authors
     $allAuthors = $newAuthor->read();
 
-    //if there are authors, post array
+    echo $allAuthors;
+
+
+ /*    //if there are authors, post array
     if ($allAuthors->rowCount() > 0)
     {
         $allAuthors_array = array();
@@ -39,7 +42,7 @@ else {
 
             //output
             echo $allAuthors_array;
-        }
+        } */
     } else {
         //No authors
         
