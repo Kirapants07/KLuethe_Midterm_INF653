@@ -20,7 +20,8 @@ $newAuthor->author = $data->author;
 //Create new author entry
 if (isset($_GET['author']) && $newAuthor->create()) {
     echo json_encode(array('author' => $newAuthor->author,
-                            'id' => $db->lastInsertid(),),
+                            'id' => $db->lastInsertid(),
+    );
 }
 else {
     echo json_encode(array('message' => 'authorId Not Found'));
