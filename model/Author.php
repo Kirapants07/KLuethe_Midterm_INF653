@@ -50,6 +50,7 @@ class Author {
             //set properties
             $this->id = $row['id'];
             $this->author = $row['author'];
+            
         } catch (Exception $e) {
             echo "Failed to read";
         }
