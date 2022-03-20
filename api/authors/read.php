@@ -30,14 +30,16 @@ else {
         while ($row = $allAuthors->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 
-            $author_item = array (
+            $author_item = json_encode(
                 'id' => $id,
                 'author' => $author,
             );
         }
+            //Push array
+            array_push($allAuthors_array, $author_item);
             //Convert to JSON and output
-            echo json_encode(array($author_item));
-
+            echo json_encode(array($allAuthors_array));
+            
     } else {
         //No authors
         
