@@ -39,7 +39,7 @@ else {
             array_push($allAuthors_array, $author_item);
 
             //Convert to JSON and output
-            echo json_encode($allAuthors_array);
+            echo $allAuthors_array;
         }
     } else {
         //No authors
