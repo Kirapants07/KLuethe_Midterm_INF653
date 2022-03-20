@@ -24,7 +24,7 @@ else {
     if ($allAuthors->rowCount() > 0)
     {
         $allAuthors_array = array();
-        $allAuthors_array['data'] = array();
+       // $allAuthors_array['data'] = array();
 
         //loop through all rows
         while ($row = $allAuthors->fetch(PDO::FETCH_ASSOC)){
@@ -36,7 +36,7 @@ else {
             );
 
             //Push to data element within array
-            array_push($allAuthors_array['data'], $author_item);
+            array_push($allAuthors_array, $author_item);
 
             //Convert to JSON and output
             echo json_encode($allAuthors_array);
@@ -44,7 +44,7 @@ else {
     } else {
         //No authors
         
-        return json_encode(array('message' => 'authorId Not Found'));
+        echo json_encode(array('message' => 'authorId Not Found'));
     }
 }
 
