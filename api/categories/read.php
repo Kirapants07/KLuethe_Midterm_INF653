@@ -24,10 +24,9 @@ else {
     if ($allCategories->rowCount() > 0)
     {
         $allCategories_array = array();
-        $allCategories_array['data'] = array();
 
-        //loop through all rows
-        while ($row = $allCategories->fetch(PDO::FETCH_ASSOC)){
+         //loop through all rows
+         while ($row = $allCategories->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 
             $category_item = array (
@@ -36,14 +35,15 @@ else {
             );
 
             //Push to data element within array
-            array_push($allCategories_array['data'], $category_item);
+            array_push($allCategories_array, $category_item);
 
-            //Convert to JSON and output
-            echo json_encode($allCategories_array);
+            //output
+            echo $allCategories_array;
         }
     } else {
-        //No categorys
-        echo json_encode(array('message' => 'categoryId Not Found'));
+        //No authors
+        
+        echo array(json_encode('message' => 'categoryId Not Found'));
     }
 }
 
