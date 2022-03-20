@@ -62,18 +62,17 @@ class Author {
             //query
             $sql = "INSERT INTO {$this->table} 
             SET
-                id = :id,
                 author = :author,";
             
             //Prepare statement
             $stmt = $this->connection->prepare($sql);
 
             //Sanitize user input
-            $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
+            //$this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
             $this->author = filter_input(INPUT_GET, "author", FILTER_SANITIZE_STRING); 
 
             //Bind parameters
-            $stmt->bindParam(':id', $this->id);
+            //$stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':author', $this->author);
 
             //Check if query executes correctly
