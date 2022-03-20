@@ -18,8 +18,8 @@ $newAuthor->read_single();
 
 //Create Array
 $author_arr = array(
-    'id' => $author->id,
-    'author' => $author->author,
+    'id' => $newAuthor->id,
+    'author' => $newAuthor->author,
 );
 
 //Convert to JSON
