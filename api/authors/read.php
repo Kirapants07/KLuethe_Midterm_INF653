@@ -34,8 +34,8 @@ else {
                 'author' => $author,
             );
 
-            //Push to data element within array
-            array_push($allAuthors_array, $author_item);
+            //Push to array
+            array_push(json_encode($allAuthors_array, $author_item));
 
             //output
             echo $allAuthors_array;
@@ -43,7 +43,7 @@ else {
     } else {
         //No authors
         
-        echo json_encode(array('message' => 'authorId Not Found'));
+        echo array('message' => 'authorId Not Found'));
     }
 }
 
