@@ -23,32 +23,14 @@ else {
     //if there are authors, post array
     if ($allAuthors->rowCount() > 0)
     {
-        $allAuthors_array = array();
+        //Create Array
+        $author_arr = array(
+            'id' => $newAuthor->id,
+            'author' => $newAuthor->author,
+        );
 
-        echo $allAuthors;
-
-    //Create Array
-    $author_arr = array(
-        'id' => $newAuthor->id,
-        'author' => $newAuthor->author,
-    );
-
-    //Convert to JSON
-    echo json_encode($author_arr);
-
-
-
-/*         //loop through all rows
-        while ($row = $allAuthors->fetch(PDO::FETCH_ASSOC)){
-            extract($row);
-
-            $author_item = json_encode(
-                'id' => $id,
-                'author' => $author,
-            );
-        }
-            //Convert to JSON and output
-            echo json_encode(array($author_item)); */
+        //Convert to JSON
+        print_r(json_encode($author_arr));
             
     } else {
         //No authors
