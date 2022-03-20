@@ -9,6 +9,7 @@ if (isset($_GET['id'])){
 } 
 //If no url is specified, read all authors
 else {
+
     //Instantiate db and connect
     $database = new Database();
     $db = $database->connect();
