@@ -24,8 +24,8 @@ if (isset($data->author) && !empty($data->author))
 //Create new author entry
 if ($newAuthor->create()) {
     echo json_encode(
-        array('author' => $newAuthor->author,
-                'id' => $db->lastInsertid(),
+        array('id' => $db->lastInsertid(),
+        'author' => $newAuthor->author,
         ));
 }
 else {

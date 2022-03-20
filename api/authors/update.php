@@ -15,7 +15,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 
 //check if author name is specified
-if (isset($data->id) && !empty($data->id))
+if (isset($data->id) && isset($data->author) && !empty($data->id) && !empty($data->id))
 {
     //assign variables
     $newAuthor->id = $data->id;
@@ -25,8 +25,8 @@ if (isset($data->id) && !empty($data->id))
 //update author entry
 if ($newAuthor->update()) {
     echo json_encode(
-        array('author' => $newAuthor->author,
-                'id' => $newAuthor->id,
+        array('id' => $newAuthor->id,
+            'author' => $newAuthor->author,
         ));
 }
 else {
