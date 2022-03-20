@@ -84,7 +84,7 @@ class Author {
             }
             //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
         } catch (Exception $e) {
-            echo "Failed to Create new entry";
+            //echo "Failed to Create new entry";
         }
 
     }
