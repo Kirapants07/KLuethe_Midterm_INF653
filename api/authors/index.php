@@ -14,19 +14,19 @@ require_once '../../config/Database.php';
 require_once '../../model/Author.php';
 
 if($method == "GET"){
-    require_once './read.php';
+    require_once 'read.php';
 }
 
 if ($method == "POST"){
-    require_once './create.php';
+    require_once 'create.php';
 }
 
 if ($method == "PUT"){
-    require_once './update.php';
+    require_once 'update.php';
 }
 
 if ($method == "DELETE"){
-    require_once './delete.php';
+    require_once 'delete.php';
 }
 
 //Instantiate db and connect
