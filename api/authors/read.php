@@ -37,10 +37,11 @@ else {
 
             //Push to data element within array
             array_push($allAuthors_array, $author_item);
+        }
 
             //Convert to JSON and output
             echo json_encode($allAuthors_array);
-        }
+    
     } else {
         //No authors
         
