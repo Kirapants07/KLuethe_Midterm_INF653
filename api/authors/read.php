@@ -43,7 +43,7 @@ else {
     } else {
         //No authors
         
-        echo array(json_encode('message' => 'authorId Not Found'));
+        echo json_encode(array('message' => 'authorId Not Found'));
     }
 }
 
