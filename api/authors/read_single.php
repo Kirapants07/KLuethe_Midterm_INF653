@@ -11,10 +11,10 @@ $db = $database->connect();
 $newAuthor = new Author($db);
 
 //Get ID from URL. If no id is set, then do nothing
-$author->id = $_GET['id'];
+$newAuthor->id = $_GET['id'];
 
 //Get Author
-$author->read_single();
+$newAuthor->read_single();
 
 //Create Array
 $author_arr = array(
