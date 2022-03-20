@@ -34,10 +34,9 @@ else {
                 'id' => $id,
                 'author' => $author,
             );
-
         }
             //Convert to JSON and output
-            echo json_encode($author_item);
+            echo json_encode(array($author_item));
 
     } else {
         //No authors
