@@ -18,22 +18,32 @@ else {
     $newAuthor = new Author($db);
 
     //get all authors
-    $newAuthor->read();
+    $allAuthors = $newAuthor->read();
 
     //if there are authors, post array
-    if ($newAuthor->rowCount() > 0)
+    if ($allAuthors->rowCount() > 0)
     {
-        //Create Array
-        $author_arr = array(
-            'id' => $newAuthor->id,
-            'author' => $newAuthor->author,
-        );
+        $allAuthors_array = array();
+       // $allAuthors_array['data'] = array();
 
-        //Convert to JSON
-        print_r(json_encode($author_arr));
-            
+        //loop through all rows
+        while ($row = $allAuthors->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+
+            $author_item = array (
+                'id' => $id,
+                'author' => $author,
+            );
+
+            //Push to data element within array
+            array_push($allAuthors_array, $author_item);
+
+            //Convert to JSON and output
+            echo json_encode($allAuthors_array);
+        }
     } else {
         //No authors
+        
         echo json_encode(array('message' => 'authorId Not Found'));
     }
 }
