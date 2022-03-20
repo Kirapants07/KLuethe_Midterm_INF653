@@ -25,7 +25,7 @@ if ($newAuthor->delete()) {
     echo json_encode(array('message' => $newAuthor->id));
 }
 else {
-    echo json_encode(array('message' => 'No Quotes Found’));
+    echo json_encode(array('message' => 'No Quotes Found'));
 }
 exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
 ?>
