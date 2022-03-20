@@ -3,19 +3,12 @@
 require_once '../../config/Database.php';
 require_once '../../model/Author.php';
 
-//Instantiate db and connect
+/* //Instantiate db and connect
 $database = new Database();
 $db = $database->connect();
 
 //Instantiate author object
-$newAuthor = new Author($db);
-
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
-
-//Instantiate author object
-$newAuthor = new Author($db);
+$newAuthor = new Author($db); */
 
 //get posted data (id)
 $data = json_decode(file_get_contents("php://input"));

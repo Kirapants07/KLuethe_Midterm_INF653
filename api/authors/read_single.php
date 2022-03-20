@@ -3,12 +3,12 @@
 require_once '../../config/Database.php';
 require_once '../../model/Author.php';
 
-//Instantiate db and connect
+/* //Instantiate db and connect
 $database = new Database();
 $db = $database->connect();
 
 //Instantiate author object
-$author = new Author($db);
+$author = new Author($db); */
 
 //Get ID from URL. If no id is set, then do nothing
 $author->id = $_GET['id'];
