@@ -25,8 +25,6 @@ class Author {
             //Execute query
             $stmt->execute(); //return value = true or false
             return $stmt;
-
-            //**************May need to convert to JSON data  */
         } catch (Exception $e) {
             echo "Failed to read";
         }
