@@ -3,10 +3,6 @@
 require_once '../../config/Database.php';
 require_once '../../model/Author.php';
 
-//get posted data
-$data = json_decode(file_get_contents("php://input"));
-
-
 //Instantiate db and connect
 $database = new Database();
 $db = $database->connect();
