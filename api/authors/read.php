@@ -25,7 +25,18 @@ else {
     {
         $allAuthors_array = array();
 
-        echo $allAuthors->fetchAll();
+        echo $allAuthors;
+
+    //Create Array
+    $author_arr = array(
+        'id' => $newAuthor->id,
+        'author' => $newAuthor->author,
+    );
+
+    //Convert to JSON
+    echo json_encode($author_arr);
+
+
 
 /*         //loop through all rows
         while ($row = $allAuthors->fetch(PDO::FETCH_ASSOC)){
