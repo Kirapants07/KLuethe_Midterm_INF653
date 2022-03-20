@@ -90,7 +90,7 @@ class Author {
     }
 
     //Update existing author with given id, return updated entry as JSON data
-    public function update($id) {
+    public function update() {
         //try to prepare and execute sql statement
         try {
             //query
@@ -126,7 +126,7 @@ class Author {
     }
 
     //delete existing author eith given id, return id as JAON data
-    public function delete($id){
+    public function delete(){
             //try to prepare and execute sql statement
             try {
                 //query
@@ -138,7 +138,6 @@ class Author {
 
                 //Sanitize id
                 $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
-
 
                 //Bind ID variable to prepared statement
                 $stmt->bindParam(':id', $this->id);
