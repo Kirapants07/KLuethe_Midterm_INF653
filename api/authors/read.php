@@ -20,10 +20,7 @@ else {
     //get all authors
     $allAuthors = $newAuthor->read();
 
-    echo $allAuthors;
-
-
- /*    //if there are authors, post array
+    //if there are authors, post array
     if ($allAuthors->rowCount() > 0)
     {
         $allAuthors_array = array();
@@ -37,16 +34,16 @@ else {
                 'author' => $author,
             );
 
-            //Push to array
-            array_push(json_encode($allAuthors_array, $author_item));
+            //Push to data element within array
+            array_push($allAuthors_array, $author_item);
 
             //output
             echo $allAuthors_array;
-        } */
+        }
     } else {
         //No authors
         
-        echo array('message' => 'authorId Not Found'));
+        echo array(json_encode('message' => 'authorId Not Found'));
     }
 }
 
