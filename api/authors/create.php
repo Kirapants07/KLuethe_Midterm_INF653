@@ -13,13 +13,13 @@ $newAuthor = new Author($db);
 //get posted data
 $data = json_decode(file_get_contents("php://input"));
 
-//assign variables
-$newAuthor->author = $data->author;
 
 //check if author name is specified
-//isset($_GET['author']) && 
-
-
+if (isset($data->author) && !empty($data->author))
+{
+    //assign variables
+    $newAuthor->author = $data->author;
+}
 
 //Create new author entry
 if ($newAuthor->create()) {
