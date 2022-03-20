@@ -1,5 +1,15 @@
 <?php
 
+require_once '../../config/Database.php';
+require_once '../../model/Author.php';
+
+//Instantiate db and connect
+$database = new Database();
+$db = $database->connect();
+
+//Instantiate author object
+$newAuthor = new Author($db);
+
 //If id is specified, only read_single author
 if (isset($_GET['id'])){
     require_once 'read_single.php'; 
