@@ -33,8 +33,8 @@ else {
             $quote_item = array (
                 'id' => $id,
                 'quote' => $quote,
-                'authorid' => $authorid,
-                'categoryid' => $categoryid,
+                'authorid' => $authorId,
+                'categoryid' => $categoryId,
             );
 
             //Push to data element within array
