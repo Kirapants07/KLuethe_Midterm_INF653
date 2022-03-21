@@ -29,6 +29,6 @@ $database = new Database();
 $db = $database->connect();
 
 //Instantiate author object
-$newAuthor = new Author($db);
+$newAuthor = new Author($db); */
 
 ?>
