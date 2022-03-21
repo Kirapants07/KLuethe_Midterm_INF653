@@ -24,7 +24,6 @@ else {
     if ($allQuotes->rowCount() > 0)
     {
         $allQuotes_array = array();
-       // $allQuotes_array['data'] = array();
 
         //loop through all rows
         while ($row = $allQuotes->fetch(PDO::FETCH_ASSOC)){
