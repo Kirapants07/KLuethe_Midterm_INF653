@@ -11,8 +11,7 @@ $db = $database->connect();
 $newAuthor = new Author($db);
 
 //get posted data (id)
-//json_decode(file_get_contents("php://input")
-$data = $_DELETE['id'];
+$data = json_decode(file_get_contents("php://input"));
 
 //check if id is specified
 if (isset($data->id) && !empty($data->id))
