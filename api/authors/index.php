@@ -8,6 +8,9 @@ if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
 }
 
+require_once '../../config/Database.php';
+require_once '../../model/Author.php';
+
 if($method == "GET"){
     require_once 'read.php';
 }
@@ -24,11 +27,11 @@ if ($method == "DELETE"){
     require_once 'delete.php';
 }
 
-/* //Instantiate db and connect
+//Instantiate db and connect
 $database = new Database();
 $db = $database->connect();
 
 //Instantiate author object
-$newAuthor = new Author($db); */
+$newAuthor = new Author($db);
 
 ?>
