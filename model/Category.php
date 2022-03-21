@@ -14,7 +14,7 @@ class Category {
         $this->connection = $db;
     }
 
-    //Read all categories, and return as JSON data
+    //Read all authors, and return as JSON data
     public function read() {
         //try to prepare and execute sql statement
         try {
@@ -30,7 +30,7 @@ class Category {
         }
     }
 
-    //Read category with given id and return as JSON data
+    //Read author with given id and return as JSON data
     public function read_single() {
 
         //try to prepare and execute sql statement
@@ -55,25 +55,24 @@ class Category {
         }
     }
 
-    //Create new category entry, return new entry as JSON data
+    //Create new author entry, return new entry as JSON data
     public function create() {
         //try to prepare and execute sql statement
         try {
             //query
             $sql = "INSERT INTO {$this->table} 
             SET
-                id = :id,
-                category = :category,";
+                category = :category";
             
             //Prepare statement
             $stmt = $this->connection->prepare($sql);
 
             //Sanitize user input
-            $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
+            //$this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
             $this->category = filter_input(INPUT_GET, "category", FILTER_SANITIZE_STRING); 
 
             //Bind parameters
-            $stmt->bindParam(':id', $this->id);
+            //$stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':category', $this->category);
 
             //Check if query executes correctly
@@ -85,21 +84,21 @@ class Category {
             }
             //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
         } catch (Exception $e) {
-            echo "Failed to Create new entry";
+            //echo "Failed to Create new entry";
         }
 
     }
 
-    //Update existing category with given id, return updated entry as JSON data
-    public function update($id) {
+    //Update existing author with given id, return updated entry as JSON data
+    public function update() {
         //try to prepare and execute sql statement
         try {
             //query
             $sql = "UPDATE {$this->table} 
             SET
-                category = :category,
+            category = :category,
             WHERE 
-                id = :id,";
+                id = :id";
             
             //Prepare statement
             $stmt = $this->connection->prepare($sql);
@@ -121,13 +120,12 @@ class Category {
             }
             //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
         } catch (Exception $e) {
-            echo "Failed to Create new entry";
+            echo "Failed to update entry";
         }
-
     }
 
-    //delete existing category eith given id, return id as JAON data
-    public function delete($id){
+    //delete existing author eith given id, return id as JAON data
+    public function delete(){
             //try to prepare and execute sql statement
             try {
                 //query
@@ -139,7 +137,6 @@ class Category {
 
                 //Sanitize id
                 $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
-
 
                 //Bind ID variable to prepared statement
                 $stmt->bindParam(':id', $this->id);
