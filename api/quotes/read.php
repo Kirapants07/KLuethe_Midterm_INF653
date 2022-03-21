@@ -8,6 +8,22 @@ if (isset($_GET['id'])){
     require_once 'read_single.php'; 
 } 
 
+//If categoryId and authorId both specified
+if (isset($_GET['categoryId']) && isset($_GET['authorId'])){
+    require_once 'read_categoryId_authorId.php'; 
+} 
+
+//If authorId is specified
+if (isset($_GET['authorId']) && !isset($_GET['categoryId'])){
+    require_once 'read_authorId.php'; 
+} 
+
+//If categoryId is specified
+if (isset($_GET['categoryId']) && !isset($_GET['authorId'])){
+    require_once 'read_categoryId.php'; 
+} 
+
+
 //If no url is specified, read all quotes
 else {
     //Instantiate db and connect
