@@ -24,7 +24,7 @@ if (isset($data->author) && !empty($data->author))
         echo json_encode(
             array('id' => $db->lastInsertid(),
             'author' => $newAuthor->author,
-        )));
+        ));
     }
     //if new author entry fails, error message
     else {
