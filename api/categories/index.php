@@ -1,5 +1,4 @@
 <?php
-
 //Headers to deal with CORS -- not needed in CRUD files
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
@@ -10,24 +9,18 @@ if ($method === 'OPTIONS') {
 }
 
 if($method == "GET"){
-    require_once('read.php');
-    require_once('read_single.php');
+    require_once 'read.php';
 }
 
 if ($method == "POST"){
-    require_once('create.php');
+    require_once 'create.php';
 }
 
 if ($method == "PUT"){
-    require_once('update.php');
+    require_once 'update.php';
 }
 
 if ($method == "DELETE"){
-    require_once('delete.php');
+    require_once 'delete.php';
 }
-
-
-//instantiate model
-$category = new Category();
-
 ?>

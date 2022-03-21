@@ -1,5 +1,4 @@
 <?php
-
 //Headers to deal with CORS -- not needed in CRUD files
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
