@@ -31,10 +31,10 @@ else {
             extract($row);
 
             $quote_item = array (
-                'id' => $newQuote->id,
-                'quote' => $newQuote->quote,
-                'authorid' => $newQuote->authorid,
-                'categoryid' => $newQuote->categoryid,
+                'id' => $id,
+                'quote' => $quote,
+                'authorid' => $authorid,
+                'categoryid' => $categoryid,
             );
 
             //Push to data element within array
