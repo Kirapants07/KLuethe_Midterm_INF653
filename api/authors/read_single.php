@@ -16,8 +16,8 @@ $newAuthor->id = $_GET['id'];
 //Get Author
 $newAuthor->read_single();
 
-//check if results were returned
-if (isset($data->author) && !empty($data->author)
+//check if results were
+if (true)
 {
     //Create Array
     $author_arr = array(
