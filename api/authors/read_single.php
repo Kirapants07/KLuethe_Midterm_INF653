@@ -17,21 +17,21 @@ $newAuthor->id = $_GET['id'];
 $newAuthor->read_single();
 
 //check if results were
-if (true)
+if ($newAuthor->id !== null)
 {
     //Create Array
     $author_arr = array(
         'id' => $newAuthor->id,
         'author' => $newAuthor->author,
     );
+
+    //Convert to JSON
+    print_r(json_encode($author_arr));
 }
 else {
     //No authors
     echo json_encode(array('message' => 'authorId Not Found'));
 }
-
-//Convert to JSON
-print_r(json_encode($author_arr));
 
 exit();
 ?>
