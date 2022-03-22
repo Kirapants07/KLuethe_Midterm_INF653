@@ -1,8 +1,5 @@
 <?php
 
-require_once '../../config/Database.php';
-require_once '../../model/Quote.php';
-
 //If id is specified, only read_single quote
 if (isset($_GET['id'])){
     require_once 'read_single.php'; 
