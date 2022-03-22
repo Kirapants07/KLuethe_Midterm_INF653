@@ -1,7 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
 require_once '../../config/Database.php';
 require_once '../../model/Quote.php';
 
@@ -12,7 +10,6 @@ $db = $database->connect();
 //Instantiate quote object
 $newQuote = new Quote($db);
 
->>>>>>> parent of f179ee7 (all require once statements in index.php for All endpoints)
 //Get ID from URL. If no id is set, then do nothing
 $newQuote->categoryId = $_GET['categoryId'];
 $newQuote->authorId = $_GET['authorId'];
