@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+require_once '../../config/Database.php';
+require_once '../../model/Quote.php';
+
 //Instantiate db and connect
 $database = new Database();
 $db = $database->connect();
@@ -7,6 +12,7 @@ $db = $database->connect();
 //Instantiate quote object
 $newQuote = new Quote($db);
 
+>>>>>>> parent of f179ee7 (all require once statements in index.php for All endpoints)
 //get posted data
 $data = json_decode(file_get_contents("php://input"));
 

@@ -8,10 +8,24 @@ if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
 }
 
+<<<<<<< HEAD
 require_once '../../config/Database.php';
+require_once '../../model/Author.php';
+require_once '../../model/Category.php';
 require_once '../../model/Quote.php';
 require_once '../../function/isValid.php';
 
+//Instantiate db and connect
+$database = new Database();
+$db = $database->connect();
+
+//Instantiate author object
+$newAuthor = new Author($db);
+$newCategory = new Category($db);
+$newQuote = new Quote($db);
+
+=======
+>>>>>>> parent of f179ee7 (all require once statements in index.php for All endpoints)
 if($method == "GET"){
     require_once 'read.php';
 }
