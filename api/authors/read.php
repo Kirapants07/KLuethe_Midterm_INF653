@@ -1,8 +1,5 @@
 <?php
 
-require_once '../../config/Database.php';
-require_once '../../model/Author.php';
-
 //If id is specified, only read_single author
 if (isset($_GET['id'])){
     require_once 'read_single.php'; 
