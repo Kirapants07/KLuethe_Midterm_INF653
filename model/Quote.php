@@ -27,7 +27,8 @@ class Quote {
                             JOIN  authors as a 
                                 ON a.id = q.authorId
                             JOIN categories as c
-                                ON c.id = q.categoryId";
+                                ON c.id = q.categoryId
+                                ORDER BY q.id";
             //Perpare statement with query
             $stmt = $this->connection->prepare($sql);
             //Execute query
