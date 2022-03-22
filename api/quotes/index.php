@@ -23,7 +23,6 @@ $newAuthor = new Author($db);
 $newCategory = new Category($db);
 $newQuote = new Quote($db);
 
-
 if($method == "GET"){
     require_once 'read.php';
 }

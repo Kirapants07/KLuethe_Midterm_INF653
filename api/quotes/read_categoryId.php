@@ -1,15 +1,5 @@
 <?php
 
-require_once '../../config/Database.php';
-require_once '../../model/Quote.php';
-
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
-
-//Instantiate quote object
-$newQuote = new Quote($db);
-
 //Get ID from URL. If no id is set, then do nothing
 $newQuote->categoryId = $_GET['categoryId'];
 

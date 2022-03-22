@@ -1,15 +1,5 @@
 <?php
 
-require_once '../../config/Database.php';
-require_once '../../model/Quote.php';
-
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
-
-//Instantiate quote object
-$newQuote = new Quote($db);
-
 //get posted data (id)
 $data = json_decode(file_get_contents("php://input"));
 
@@ -25,7 +15,7 @@ if ($newQuote->delete()) {
     echo json_encode(array('id' => $newQuote->id));
 }
 else {
-    echo json_encode(array('message' => 'No Quotes Found'));
+    echo json_encode(array('message' => 'No Quotes Found');
 }
 exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
 ?>

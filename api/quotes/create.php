@@ -1,30 +1,23 @@
 <?php
 
-require_once '../../config/Database.php';
-require_once '../../model/Quote.php';
-
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
-
-//Instantiate quote object
-$newQuote = new Quote($db);
-
 //get posted data
 $data = json_decode(file_get_contents("php://input"));
 
 //check if quote name is specified
-if (isset($data->quote) && !empty($data->quote))
+if (isset($data->quote) && !empty($data->quote) && isset($data->authorId) && !empty($data->authorId) && isset($data->categoryId) && !empty($data->categoryId))
 {
     //assign variables
     $newQuote->quote = $data->quote;
-
+    $newQuote->authorId = $data->authorId;
+    $newQuote->categoryId = $data->categoryId;
 
     //Create new quote entry
     if ($newQuote->create()) {
         echo json_encode(
             array('id' => $db->lastInsertid(),
             'quote' => $newQuote->quote,
+            'authorId' => $newQuote->authorId,
+            'categoryId' => $newQuote->categoryId,
             ));
     }
     else {
