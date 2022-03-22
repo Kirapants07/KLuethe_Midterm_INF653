@@ -31,7 +31,7 @@ if (isset($data->id) && isset($data->author) && !empty($data->id) && !empty($dat
     else {
         echo json_encode(array('message' => 'authorId Not Found'));
     }
-//if author name is not specified, Missing Parameters error message
+}
 else {
     echo json_encode(array('message' => 'Missing Required Parameters'));
 }
