@@ -19,7 +19,7 @@ class Category {
         //try to prepare and execute sql statement
         try {
             //query
-            $sql = "SELECT * FROM {$this->table}";
+            $sql = "SELECT * FROM {$this->table} ORDER BY id";
             //Perpare statement with query
             $stmt = $this->connection->prepare($sql);
             //Execute query
@@ -96,7 +96,7 @@ class Category {
             //query
             $sql = "UPDATE {$this->table} 
             SET
-            category = :category,
+            category = :category
             WHERE 
                 id = :id";
             

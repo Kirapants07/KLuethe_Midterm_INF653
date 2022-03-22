@@ -19,7 +19,7 @@ class Author {
         //try to prepare and execute sql statement
         try {
             //query
-            $sql = "SELECT * FROM {$this->table}";
+            $sql = "SELECT * FROM {$this->table} ORDER BY id";
             //Perpare statement with query
             $stmt = $this->connection->prepare($sql);
             //Execute query
@@ -94,7 +94,7 @@ class Author {
             //query
             $sql = "UPDATE {$this->table} 
             SET
-                author = :author,
+                author = :author
             WHERE 
                 id = :id";
             
