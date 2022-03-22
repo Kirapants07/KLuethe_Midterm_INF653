@@ -61,15 +61,13 @@ class Author {
         try {
             //query
             $sql = "INSERT INTO {$this->table} 
-            SET
-                author = :author";
+            SET author = :author";
             
             //Prepare statement
             $stmt = $this->connection->prepare($sql);
 
             //Sanitize user input
-            //$this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
-            $this->author = filter_input(INPUT_GET, "author", FILTER_SANITIZE_STRING); 
+            $this->author = htmlspecialchars(strip_tags($this->author)); 
 
             //Bind parameters
             //$stmt->bindParam(':id', $this->id);
@@ -82,7 +80,7 @@ class Author {
                 printf("Error: %s. \n", $stmt->error);
                 return false;
             }
-            //$id = LAST_INSERT_ID(); //find last used ID or $id = $db->lastInsertID();
+
         } catch (Exception $e) {
             //echo "Failed to Create new entry";
         }
@@ -104,8 +102,8 @@ class Author {
             $stmt = $this->connection->prepare($sql);
 
             //Sanitize user input
-            $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
-            $this->author = filter_input(INPUT_GET, "author", FILTER_SANITIZE_STRING); 
+            $this->id = htmlspecialchars(strip_tags($this->id));  
+            $this->author = htmlspecialchars(strip_tags($this->author));  
 
             //Bind parameters
             $stmt->bindParam(':id', $this->id);
@@ -136,16 +134,18 @@ class Author {
                 $stmt = $this->connection->prepare($sql);
 
                 //Sanitize id
-                $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
+                $this->id = htmlspecialchars(strip_tags($this->id)); 
 
                 //Bind ID variable to prepared statement
                 $stmt->bindParam(':id', $this->id);
+
                 //Execute query
                 $stmt->execute(); //executed with WHERE id = $id
+                return true;
             } catch (Exception $e) {
                 echo "Failed to delete entry";
+                return false;
             }
-        return json_encode($id);
     }
 }
 ?>
