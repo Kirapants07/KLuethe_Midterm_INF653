@@ -20,8 +20,8 @@ $newQuote->read_single();
 $quote_arr = array(
     'id' => $newQuote->id,
     'quote' => $newQuote->quote,
-    'authorid' => $newQuote->authorid,
-    'categoryid' => $newQuote->categoryid,
+    'author' => $newQuote->author,
+    'category' => $newQuote->category,
 );
 
 //Convert to JSON

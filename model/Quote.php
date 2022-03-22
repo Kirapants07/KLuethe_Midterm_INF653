@@ -44,7 +44,13 @@ class Quote {
         //try to prepare and execute sql statement
         try {  
             //query
-            $sql = "SELECT id, quote, authorId, categoryId FROM {$this->table} WHERE id = :id";
+            $sql = "SELECT q.id, q.quote, a.author, c.category 
+            FROM quotes AS q
+                    JOIN  authors as a 
+                        ON a.id = q.authorId
+                    JOIN categories as c
+                        ON c.id = q.categoryId
+                         WHERE q.id = :id";
             //Perpare statement with query
             $stmt = $this->connection->prepare($sql);
             //Bind ID variable to prepared statement
@@ -58,8 +64,8 @@ class Quote {
             //set properties
             $this->id = $row['id'];
             $this->quote = $row['quote'];
-            $this->authorid = $row['authorId'];
-            $this->categoryid = $row['categoryId'];
+            $this->author = $row['author'];
+            $this->category = $row['category'];
 
         } catch (Exception $e) {
             echo "Failed to read";
