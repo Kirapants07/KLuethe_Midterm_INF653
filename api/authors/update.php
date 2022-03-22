@@ -20,17 +20,20 @@ if (isset($data->id) && isset($data->author) && !empty($data->id) && !empty($dat
     //assign variables
     $newAuthor->id = $data->id;
     $newAuthor->author = $data->author;
-}
 
-//update author entry
-if ($newAuthor->update()) {
-    echo json_encode(
-        array('id' => $newAuthor->id,
-            'author' => $newAuthor->author,
-        ));
-}
+    //update author entry
+    if ($newAuthor->update()) {
+        echo json_encode(
+            array('id' => $newAuthor->id,
+                'author' => $newAuthor->author,
+            ));
+    }
+    else {
+        echo json_encode(array('message' => 'authorId Not Found'));
+    }
+//if author name is not specified, Missing Parameters error message
 else {
-    echo json_encode(array('message' => 'authorId Not Found'));
+    echo json_encode(array('message' => 'Missing Required Parameters'));
 }
 
 exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
