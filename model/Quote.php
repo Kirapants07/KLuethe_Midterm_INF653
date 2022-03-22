@@ -22,7 +22,12 @@ class Quote {
         //try to prepare and execute sql statement
         try {
             //query
-            $sql = "SELECT * FROM {$this->table}";
+            $sql = "SELECT q.id, q.quote, a.author, c.category 
+                    FROM quotes AS q
+                            JOIN  authors as a 
+                                ON a.id = q.authorId
+                            JOIN categories as c
+                                ON c.id = q.categoryId";
             //Perpare statement with query
             $stmt = $this->connection->prepare($sql);
             //Execute query
@@ -107,8 +112,13 @@ class Quote {
             //try to prepare and execute sql statement
             try {  
                 //query
-                $sql = "SELECT id, quote, authorId, categoryId FROM {$this->table} 
-                    WHERE categoryId = :categoryId 
+                $sql = "SELECT q.id, q.quote, a.author, c.category 
+                FROM {$this->table} AS q, 
+                JOIN authors as a 
+                    ON a.id = q.authorId
+                JOIN categories as c
+                    ON c.id = q.categoryId
+                WHERE categoryId = :categoryId 
                     AND authorId = :authorId";
                 //Perpare statement with query
                 $stmt = $this->connection->prepare($sql);
