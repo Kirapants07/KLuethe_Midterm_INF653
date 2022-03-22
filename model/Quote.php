@@ -229,27 +229,29 @@ class Quote {
 
     //delete existing author eith given id, return id as JAON data
     public function delete(){
-            //try to prepare and execute sql statement
-            try {
-                //query
-                $sql = "DELETE FROM {$this->table}
-                        WHERE id = :id";
+        //try to prepare and execute sql statement
+        try {
+            //query
+            $sql = "DELETE FROM {$this->table}
+                    WHERE id = :id";
 
-                //prepare statement
-                $stmt = $this->connection->prepare($sql);
+            //prepare statement
+            $stmt = $this->connection->prepare($sql);
 
-                //Sanitize id
-                $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
+            //Sanitize id
+            $this->id = htmlspecialchars(strip_tags($this->id)); 
 
-                //Bind ID variable to prepared statement
-                $stmt->bindParam(':id', $this->id);
-                //Execute query
-                $stmt->execute(); //executed with WHERE id = $id
-            } catch (Exception $e) {
-                echo "Failed to delete entry";
-            }
-        return json_encode($id);
-    }
+            //Bind ID variable to prepared statement
+            $stmt->bindParam(':id', $this->id);
+
+            //Execute query
+            $stmt->execute(); //executed with WHERE id = $id
+            return true;
+        } catch (Exception $e) {
+            echo "Failed to delete entry";
+            return false;
+        }
+}
 }
 ?>
 
