@@ -5,7 +5,10 @@ $data = json_decode(file_get_contents("php://input"));
 
 
 //check if quote name is specified
-if (isset($data->id) && isset($data->quote) && !empty($data->id) && !empty($data->id))
+if (isset($data->id) && !empty($data->id)
+&& isset($data->quote) && !empty($data->quote)
+&& isset($data->authorId) && !empty($data->authorId)
+&& isset($data->categoryId) && !empty($data->categoryId))
 {
     //assign variables
     $newQuote->id = $data->id;
@@ -26,7 +29,7 @@ if (isset($data->id) && isset($data->quote) && !empty($data->id) && !empty($data
         //update quote entry
         if ($newQuote->update()) {
             echo json_encode(
-                array('id' => $db->lastInsertid(),
+                array('id' => $newQuote->id,
                 'quote' => $newQuote->quote,
                 'authorId' => $newQuote->authorId,
                 'categoryId' => $newQuote->categoryId,
