@@ -20,17 +20,18 @@ if (isset($data->id) && isset($data->quote) && !empty($data->id) && !empty($data
     //assign variables
     $newQuote->id = $data->id;
     $newQuote->quote = $data->quote;
+}
 
-    //update quote entry
-    if ($newQuote->update()) {
-        echo json_encode(
-            array('id' => $newQuote->id,
-                'quote' => $newQuote->quote,
-            ));
-    }
-    else {
-        echo json_encode(array('message' => 'quoteId Not Found'));
-    }
+//update quote entry
+if ($newQuote->update()) {
+    echo json_encode(
+        array('id' => $newQuote->id,
+            'quote' => $newQuote->quote,
+        ));
+}
+else {
+    echo json_encode(array('message' => 'quoteId Not Found'));
+}
 //if author name is not specified, Missing Parameters error message
 else {
     echo json_encode(array('message' => 'Missing Required Parameters'));
