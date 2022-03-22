@@ -7,6 +7,13 @@ if (isset($_GET['id'])){
 
 //If no url is specified, read all categorys
 else {
+    //Instantiate db and connect
+    $database = new Database();
+    $db = $database->connect();
+
+    //Instantiate category object
+    $newCategory = new Category($db);
+
     //get all categorys
     $allCategories = $newCategory->read();
 

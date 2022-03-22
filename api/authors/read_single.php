@@ -1,5 +1,12 @@
 <?php
 
+//Instantiate db and connect
+$database = new Database();
+$db = $database->connect();
+
+//Instantiate author object
+$newAuthor = new Author($db);
+
 //Get ID from URL. If no id is set, then do nothing
 $newAuthor->id = $_GET['id'];
 
