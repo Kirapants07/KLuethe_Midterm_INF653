@@ -68,6 +68,7 @@ class Quote {
             $this->author = $row['author'];
             $this->category = $row['category'];
 
+            return true;
         } catch (Exception $e) {
             echo "Failed to read";
         }
