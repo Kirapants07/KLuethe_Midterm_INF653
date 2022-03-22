@@ -83,7 +83,7 @@ class Quote {
                                 ON a.id = q.authorId
                             JOIN categories as c
                                 ON c.id = q.categoryId
-                            WHERE q.authorid = :authorId";
+                            WHERE q.authorId = :authorId";
             //Perpare statement with query
             $stmt = $this->connection->prepare($sql);
             //Bind authorId variable to prepared statement
@@ -154,23 +154,22 @@ class Quote {
             $sql = "INSERT INTO {$this->table} 
             SET
                 quote = :quote,
-                authorid = :authorid,
-                categoryid = :categoryid";
+                authorId = :authorId,
+                categoryId = :categoryId";
             
             //Prepare statement
             $stmt = $this->connection->prepare($sql);
 
             //Sanitize user input
-            //$this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
-            $this->quote = filter_input(INPUT_GET, "quote", FILTER_SANITIZE_STRING); 
-            $this->authorid = filter_input(INPUT_GET, "authorid", FILTER_SANITIZE_STRING);
-            $this->categoryid = filter_input(INPUT_GET, "categoryid", FILTER_SANITIZE_STRING);
+            $this->quote = htmlspecialchars(strip_tags($this->quote));  
+            $this->authorId = htmlspecialchars(strip_tags($this->authorId)); 
+            $this->categoryId = htmlspecialchars(strip_tags($this->categoryId)); 
 
             //Bind parameters
             //$stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':quote', $this->quote);
-            $stmt->bindParam(':authorid', $this->authorid);
-            $stmt->bindParam(':categoryid', $this->categoryid);
+            $stmt->bindParam(':authorId', $this->authorId);
+            $stmt->bindParam(':categoryId', $this->categoryId);
 
             //Check if query executes correctly
             if ($stmt->execute()){
@@ -194,8 +193,8 @@ class Quote {
             $sql = "UPDATE {$this->table} 
             SET
                 quote = :quote,
-                authorid = :authorid,
-                categoryid = :categoryid
+                authorId = :authorId,
+                categoryId = :categoryId
             WHERE 
                 id = :id";
             
@@ -203,16 +202,16 @@ class Quote {
             $stmt = $this->connection->prepare($sql);
 
             //Sanitize user input
-            $this->id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_STRING); 
-            $this->quote = filter_input(INPUT_GET, "quote", FILTER_SANITIZE_STRING); 
-            $this->authorid = filter_input(INPUT_GET, "authorid", FILTER_SANITIZE_STRING);
-            $this->categoryid = filter_input(INPUT_GET, "categoryid", FILTER_SANITIZE_STRING);
+            $this->id = htmlspecialchars(strip_tags($this->id));  
+            $this->quote = htmlspecialchars(strip_tags($this->quote));  
+            $this->authorId = htmlspecialchars(strip_tags($this->authorId)); 
+            $this->categoryId = htmlspecialchars(strip_tags($this->categoryId)); 
 
             //Bind parameters
             $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':quote', $this->quote);
-            $stmt->bindParam(':authorid', $this->authorid);
-            $stmt->bindParam(':categoryid', $this->categoryid);
+            $stmt->bindParam(':authorId', $this->authorId);
+            $stmt->bindParam(':categoryId', $this->categoryId);
 
             //Check if query executes correctly
             if ($stmt->execute()){
