@@ -47,9 +47,16 @@ class Author {
             //fetch associative array
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            //set properties
-            $this->id = $row['id'];
-            $this->author = $row['author'];
+            //check for null values
+            if (isset($row['id'])){
+                //set properties
+                $this->id = $row['id'];
+                $this->author = $row['author'];
+
+                return true;
+            }
+            return false;
+            
         } catch (Exception $e) {
             echo "Failed to read";
         }

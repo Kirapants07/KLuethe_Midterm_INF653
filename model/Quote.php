@@ -39,8 +39,8 @@ class Quote {
         }
     }
 
-    //Read author with given id and return as JSON data
-    public function read_single() {
+     //Read author with given id and return as JSON data
+     public function read_single() {
 
         //try to prepare and execute sql statement
         try {  
@@ -62,18 +62,23 @@ class Quote {
             //fetch associative array
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            //set properties
-            $this->id = $row['id'];
-            $this->quote = $row['quote'];
-            $this->author = $row['author'];
-            $this->category = $row['category'];
+            //check for null values
+            if (isset($row['id'])){
+                //set properties
+                $this->id = $row['id'];
+                $this->quote = $row['quote'];
+                $this->author = $row['author'];
+                $this->category = $row['category'];
 
-            return true;
+                return true;
+            }
+            return false;
+
         } catch (Exception $e) {
             echo "Failed to read";
+            return false;
         }
     }
-
         //Read author with given id and return as JSON data
         public function read_authorId() {
         //try to prepare and execute sql statement

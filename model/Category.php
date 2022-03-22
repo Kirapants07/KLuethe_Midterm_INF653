@@ -47,11 +47,19 @@ class Category {
             //fetch associative array
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            //set properties
-            $this->id = $row['id'];
-            $this->category = $row['category'];
+            //check for null values
+            if (isset($row['id'])){
+                //set properties
+                $this->id = $row['id'];
+                $this->category = $row['category'];
+
+                return true;
+            }
+            return false;
+
         } catch (Exception $e) {
             echo "Failed to read";
+            return false;
         }
     }
 
