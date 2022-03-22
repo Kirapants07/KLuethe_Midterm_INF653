@@ -18,17 +18,21 @@ if (isset($data->category) && !empty($data->category))
 {
     //assign variables
     $newCategory->category = $data->category;
-}
 
-//Create new category entry
-if ($newCategory->create()) {
-    echo json_encode(
-        array('id' => $db->lastInsertid(),
-        'category' => $newCategory->category,
-        ));
+    //Create new category entry
+    if ($newCategory->create()) {
+        echo json_encode(
+            array('id' => $db->lastInsertid(),
+            'category' => $newCategory->category,
+            ));
+    }
+    else {
+        echo json_encode(array('message' => 'categoryId Not Found'));
+    }
 }
+//if author name is not specified, Missing Parameters error message
 else {
-    echo json_encode(array('message' => 'categoryId Not Found'));
+    echo json_encode(array('message' => 'Missing Required Parameters'));
 }
 
 exit(); //prevent accidentally attempting to complete more than one operation per HTTP request
