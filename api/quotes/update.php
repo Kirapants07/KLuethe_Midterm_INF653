@@ -24,6 +24,11 @@ if (isset($data->id) && !empty($data->id)
     else if (!isValid($data->categoryId,$newCategory)){
         echo json_encode(array('message' => 'categoryId Not Found'));
         }
+    //check if categoryId exists in database
+    else if (!isValid($data->id,$newQuote)){
+        echo json_encode(array('message' => 'No Quotes Found'));
+        }
+    
     //if both are valid
     else {
         //update quote entry
