@@ -10,9 +10,21 @@ if (isset($data->id) && isset($data->quote) && !empty($data->id) && !empty($data
     //assign variables
     $newQuote->id = $data->id;
     $newQuote->quote = $data->quote;
+    $newQuote->authorId = $data->authorId;
+    $newQuote->categoryId = $data->categoryId;
 
-    //update quote entry
-    if ($newQuote->update()) {
+    //check if authorId exists in database
+    if (!isValid($data->authorId,$newAuthor)){
+        echo json_encode(array('message' => 'authorId Not Found'));
+    }
+    //check if categoryId exists in database
+    else if (!isValid($data->categoryId,$newCategory)){
+        echo json_encode(array('message' => 'categoryId Not Found'));
+        }
+    //if both are valid
+    else {
+        //update quote entry
+        if ($newQuote->update()) {
             echo json_encode(
                 array('id' => $db->lastInsertid(),
                 'quote' => $newQuote->quote,
@@ -20,8 +32,9 @@ if (isset($data->id) && isset($data->quote) && !empty($data->id) && !empty($data
                 'categoryId' => $newQuote->categoryId,
                 ));
         }
-    else {
-        echo json_encode(array('message' => 'quoteId Not Found'));
+        else {
+            echo json_encode(array('message' => 'quoteId Not Found'));
+        }
     }
 }
 else {

@@ -24,8 +24,6 @@ if (isset($data->quote) && !empty($data->quote) && isset($data->authorId) && !em
 
     //if both are valid
     else {
-
-
         //Create new quote entry
         if ($newQuote->create()) {
             echo json_encode(
