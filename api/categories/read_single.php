@@ -1,12 +1,5 @@
 <?php
 
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
-
-//Instantiate category object
-$newCategory = new Category($db);
-
 //Get ID from URL. If no id is set, then do nothing
 $newCategory->id = $_GET['id'];
 

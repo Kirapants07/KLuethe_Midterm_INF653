@@ -1,12 +1,5 @@
 <?php
 
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
-
-//Instantiate quote object
-$newQuote = new Quote($db);
-
 //get posted data
 $data = json_decode(file_get_contents("php://input"));
 

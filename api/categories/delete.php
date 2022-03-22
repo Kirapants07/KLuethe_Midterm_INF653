@@ -1,12 +1,5 @@
 <?php
 
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
-
-//Instantiate category object
-$newCategory = new Category($db);
-
 //get posted data (id)
 $data = json_decode(file_get_contents("php://input"));
 

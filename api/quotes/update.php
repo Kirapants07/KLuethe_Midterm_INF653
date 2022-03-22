@@ -1,15 +1,7 @@
 <?php
 
-//Instantiate db and connect
-$database = new Database();
-$db = $database->connect();
-
-//Instantiate quote object
-$newQuote = new Quote($db);
-
 //get posted data
 $data = json_decode(file_get_contents("php://input"));
-
 
 //check if quote name is specified
 if (isset($data->id) && isset($data->quote) && !empty($data->id) && !empty($data->id))

@@ -23,12 +23,6 @@ if (isset($_GET['categoryId']) && !isset($_GET['authorId'])){
 
 //If no url is specified, read all quotes
 else {
-    //Instantiate db and connect
-    $database = new Database();
-    $db = $database->connect();
-
-    //Instantiate quote object
-    $newQuote = new Quote($db);
 
     //get all quotes
     $allQuotes = $newQuote->read();
