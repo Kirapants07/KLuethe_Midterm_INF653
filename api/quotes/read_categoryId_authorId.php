@@ -29,8 +29,8 @@ if ($allQuotes->rowCount() > 0)
         $quote_item = array (
             'id' => $id,
             'quote' => $quote,
-            'authorid' => $authorId,
-            'categoryid' => $categoryId,
+            'author' => $author,
+            'category' => $category,
         );
 
         //Push to data element within array

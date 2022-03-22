@@ -74,71 +74,77 @@ class Quote {
 
         //Read author with given id and return as JSON data
         public function read_authorId() {
-
-            //try to prepare and execute sql statement
-            try {  
-                //query
-                $sql = "SELECT id, quote, authorId, categoryId FROM {$this->table} WHERE authorId = :authorId";
-                //Perpare statement with query
-                $stmt = $this->connection->prepare($sql);
-                //Bind ID variable to prepared statement
-                $stmt->bindParam(':authorId',  $this->authorId);
-                //Execute query
-                $stmt->execute(); //executed with WHERE id = $id
-    
-                return $stmt;
-            } catch (Exception $e) {
-                echo "Failed to read";
-            }
+        //try to prepare and execute sql statement
+        try {
+            //query
+            $sql = "SELECT q.id, q.quote, a.author, c.category 
+                    FROM quotes AS q
+                            JOIN  authors as a 
+                                ON a.id = q.authorId
+                            JOIN categories as c
+                                ON c.id = q.categoryId
+                            WHERE q.authorid = :authorId";
+            //Perpare statement with query
+            $stmt = $this->connection->prepare($sql);
+            //Bind authorId variable to prepared statement
+            $stmt->bindParam(':authorId',  $this->authorId);
+            //Execute query
+            $stmt->execute(); //return value = true or false
+            return $stmt;
+        } catch (Exception $e) {
+            echo "Failed to read";
         }
+    }
 
         //Read author with given id and return as JSON data
         public function read_categoryId() {
-
-            //try to prepare and execute sql statement
-            try {  
-                //query
-                $sql = "SELECT id, quote, authorId, categoryId FROM {$this->table} WHERE categoryId = :categoryId";
-                //Perpare statement with query
-                $stmt = $this->connection->prepare($sql);
-                //Bind ID variable to prepared statement
-                $stmt->bindParam(':categoryId',  $this->categoryId);
-                //Execute query
-                $stmt->execute(); //executed with WHERE id = $id
-    
-                return $stmt;
-            } catch (Exception $e) {
-                echo "Failed to read";
-            }
+        //try to prepare and execute sql statement
+        try {
+            //query
+            $sql = "SELECT q.id, q.quote, a.author, c.category 
+                    FROM quotes AS q
+                            JOIN  authors as a 
+                                ON a.id = q.authorId
+                            JOIN categories as c
+                                ON c.id = q.categoryId
+                            WHERE q.categoryId = :categoryId";
+            //Perpare statement with query
+            $stmt = $this->connection->prepare($sql);
+            //Bind categoryId variable to prepared statement
+            $stmt->bindParam(':categoryId',  $this->categoryId);
+            //Execute query
+            $stmt->execute(); //return value = true or false
+            return $stmt;
+        } catch (Exception $e) {
+            echo "Failed to read";
         }
+    }
 
         //Read author with given id and return as JSON data
         public function read_categoryId_authorId() {
-
-            //try to prepare and execute sql statement
-            try {  
-                //query
-                $sql = "SELECT q.id, q.quote, a.author, c.category 
-                FROM {$this->table} AS q, 
-                JOIN authors as a 
-                    ON a.id = q.authorId
-                JOIN categories as c
-                    ON c.id = q.categoryId
-                WHERE categoryId = :categoryId 
-                    AND authorId = :authorId";
-                //Perpare statement with query
-                $stmt = $this->connection->prepare($sql);
-                //Bind ID variable to prepared statement
-                $stmt->bindParam(':categoryId',  $this->categoryId);
-                $stmt->bindParam(':authorId',  $this->authorId);
-                //Execute query
-                $stmt->execute(); //executed with WHERE id = $id
-    
-                return $stmt;
-            } catch (Exception $e) {
-                echo "Failed to read";
-            }
+        //try to prepare and execute sql statement
+        try {
+            //query
+            $sql = "SELECT q.id, q.quote, a.author, c.category 
+                    FROM quotes AS q
+                            JOIN  authors as a 
+                                ON a.id = q.authorId
+                            JOIN categories as c
+                                ON c.id = q.categoryId
+                            WHERE q.categoryId = :categoryId
+                            AND q.authorId = :authorId";
+            //Perpare statement with query
+            $stmt = $this->connection->prepare($sql);
+            //Bind categoryId variable to prepared statement
+            $stmt->bindParam(':categoryId',  $this->categoryId);
+            $stmt->bindParam(':authorId',  $this->authorId);
+            //Execute query
+            $stmt->execute(); //return value = true or false
+            return $stmt;
+        } catch (Exception $e) {
+            echo "Failed to read";
         }
+    }
 
     //Create new author entry, return new entry as JSON data
     public function create() {
