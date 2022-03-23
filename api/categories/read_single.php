@@ -7,7 +7,7 @@ $newCategory->id = $_GET['id'];
 $newCategory->read_single();
 
 //check if results were
-if ($newCategory->id !== null)
+if ($newCategory->category !== null)
 {
     //Create Array
     $category_arr = array(

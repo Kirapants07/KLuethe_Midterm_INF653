@@ -7,7 +7,7 @@ $newQuote->id = $_GET['id'];
 $newQuote->read_single();
 
 //check if results were
-if ($newQuote->id !== null)
+if ($newQuote->quote !== null)
 {
     //Create Array
     $quote_arr = array(

@@ -7,7 +7,7 @@ $newAuthor->id = $_GET['id'];
 $newAuthor->read_single();
 
 //check if results were
-if ($newAuthor->id !== null)
+if ($newAuthor->author !== null)
 {
     //Create Array
     $author_arr = array(
